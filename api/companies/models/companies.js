@@ -1,5 +1,7 @@
 'use strict';
 
+const { v4: uuidv4 } = require('uuid');
+
 /**
  * Lifecycle callbacks for the `companies` model.
  */
@@ -31,7 +33,9 @@ module.exports = {
 
   // Before creating a value.
   // Fired before an `insert` query.
-  // beforeCreate: async (model, attrs, options) => {},
+  beforeCreate: async (model) => {
+    model.set('label', uuidv4());
+  },
 
   // After creating a value.
   // Fired after an `insert` query.
